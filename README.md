@@ -6,7 +6,7 @@ This is a fully functional basic MEAN stack app seed. It has passport, gulp, and
 2. Run `npm install -g gulp` (if you want to use gulp)
 3. In the project folder, run `npm install`
 4. In one terminal window run `gulp` (if you want to use gulp)
-5. Run 'nodemon'
+5. Run 'nodemon' in another terminal window
 
 ###To change Sass to Less (do this before you run `npm install`)
 Copy and paste this code into gulpfile.js (replacing the whole file)
