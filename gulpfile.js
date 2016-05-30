@@ -4,7 +4,6 @@ var annotate = require('gulp-ng-annotate');
 var uglify = require('gulp-uglify');
 var watch = require('gulp-watch');
 var sass = require('gulp-sass');
-var path = require('path');
 
 var paths = {
   jsSource: ['./public/app/**/*.js', '!/public/bundle.js'],
@@ -23,7 +22,6 @@ gulp.task('sass', function () {
   return gulp.src(paths.sassSource)
     .pipe(sass())
     .pipe(concat('style.css'))
-    //.pipe(uglify()) //Uncomment when code is production ready
     .pipe(gulp.dest('./public/styles'));
 });
 
