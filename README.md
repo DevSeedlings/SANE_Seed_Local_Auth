@@ -14,7 +14,6 @@ Copy and paste this code into gulpfile.js (replacing the whole file)
 var gulp = require('gulp');
 var concat = require('gulp-concat');
 var annotate = require('gulp-ng-annotate');
-var plumber = require('gulp-plumber');
 var uglify = require('gulp-uglify');
 var watch = require('gulp-watch');
 var less = require('gulp-less');
@@ -27,18 +26,17 @@ var paths = {
 
 gulp.task('js', function() {
   return gulp.src(paths.jsSource)
-  .pipe(plumber())
   .pipe(concat('bundle.js'))
   .pipe(annotate())
+  //.pipe(uglify()) //Uncomment when ready for production
   .pipe(gulp.dest('./public'));
 });
 
 gulp.task('less', function () {
   return gulp.src(paths.lessSource)
-    .pipe(less({
-      paths: [ path.join(__dirname, 'styles') ]
-    }))
+    .pipe(less())
     .pipe(concat('style.css'))
+    //.pipe(uglify()) //Uncomment when ready for production
     .pipe(gulp.dest('./public/styles'));
 });
 
