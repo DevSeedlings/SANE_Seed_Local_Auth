@@ -17,7 +17,6 @@ var annotate = require('gulp-ng-annotate');
 var uglify = require('gulp-uglify');
 var watch = require('gulp-watch');
 var less = require('gulp-less');
-var path = require('path');
 
 var paths = {
   jsSource: ['./public/app/**/*.js', '!/public/bundle.js'],
@@ -36,7 +35,6 @@ gulp.task('less', function () {
   return gulp.src(paths.lessSource)
     .pipe(less())
     .pipe(concat('style.css'))
-    //.pipe(uglify()) //Uncomment when ready for production
     .pipe(gulp.dest('./public/styles'));
 });
 
