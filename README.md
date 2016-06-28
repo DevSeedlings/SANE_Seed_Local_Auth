@@ -8,41 +8,6 @@ This is a fully functional basic MEAN stack app seed. It has passport, gulp, and
 4. In one terminal window run `gulp` (if you want to use gulp)
 5. Run 'nodemon' in another terminal window
 
-###To change Sass to Less (do this before you run `npm install`)
-Copy and paste this code into gulpfile.js (replacing the whole file)
-```javascript
-var gulp = require('gulp');
-var concat = require('gulp-concat');
-var annotate = require('gulp-ng-annotate');
-var uglify = require('gulp-uglify');
-var watch = require('gulp-watch');
-var less = require('gulp-less');
+###To use Less
+Follow comments that mention Less
 
-var paths = {
-  jsSource: ['./public/app/**/*.js', '!/public/bundle.js'],
-  lessSource: ['./public/styles/**/*.less']
-};
-
-gulp.task('js', function() {
-  return gulp.src(paths.jsSource)
-  .pipe(concat('bundle.js'))
-  .pipe(annotate())
-  //.pipe(uglify()) //Uncomment when ready for production
-  .pipe(gulp.dest('./public'));
-});
-
-gulp.task('less', function () {
-  return gulp.src(paths.lessSource)
-    .pipe(less())
-    .pipe(concat('style.css'))
-    .pipe(gulp.dest('./public/styles'));
-});
-
-gulp.task('watch', function() {
-  gulp.watch(paths.jsSource, ['js']);
-  gulp.watch(paths.lessSource, ['less']);
-});
-
-gulp.task('default', ['watch', 'js', 'less']);
-
-```
