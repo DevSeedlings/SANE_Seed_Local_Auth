@@ -9,5 +9,5 @@ This is a fully functional basic MEAN stack app seed. It has passport, gulp, and
 5. Run 'nodemon' in another terminal window
 
 ###To use Less
-Follow comments that mention Less
+Follow comments in gulp file that mention Less
 
