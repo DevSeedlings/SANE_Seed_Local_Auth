@@ -19,15 +19,15 @@ gulp.task('serve', function() {
 gulp.task('sass', function() {
 	gulp.src(paths.sassSource)
 		.pipe(sass())
-		.pipe(concat('bundle.css'))
-		.pipe(gulp.dest('./public/dist'));
+		.pipe(concat('style.css'))
+		.pipe(gulp.dest('./public'));
 });
 
 gulp.task('js', function() {
 	gulp.src(paths.jsSource)
 		.pipe(annotate())
 		.pipe(concat('bundle.js'))
-		.pipe(gulp.dest('./public/dist'));
+		.pipe(gulp.dest('./public'));
 });
 
 gulp.task('watch', function() {
@@ -35,4 +35,4 @@ gulp.task('watch', function() {
 	gulp.watch(paths.sassSource, ['sass']);
 });
 
-gulp.task('default', ['js', 'sass', 'watch', 'serve']);
+gulp.task('default', ['js', 'sass', 'watch']);

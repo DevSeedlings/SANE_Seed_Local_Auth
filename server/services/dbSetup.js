@@ -5,9 +5,6 @@ module.exports = {
 	run: function() {
 		console.log('Initializing database');
 
-		db.user_table_initalize(function(err, table) {
-			console.log(err, table);
-
-		});
+		db.user_table_initalize(function(err, table) {});
 	}
 };

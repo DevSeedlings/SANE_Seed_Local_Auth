@@ -1,19 +1,39 @@
+// APP //
 var app = require('./../index');
 var db = app.get('db');
 
+// BCRYPT
+var bcrypt = require('bcryptjs');
+
+// HASH PASSWORD //
+function hashPassword(password) {
+	var salt = bcrypt.genSaltSync(10);
+	var hash = bcrypt.hashSync(password, salt);
+	return hash;
+}
+
 module.exports = {
 
+	// REGISTER USER //
 	register: function(req, res, next) {
-		User.create(req.body, function(err, result) {
+		var user = req.body;
+
+		// Hash the users password for security
+		user.password = hashPassword(user.password);
+
+		db.user_create([user.name, user.email, user.password], function(err, user) {
+			// If err, send err
 			if (err) return res.status(500)
 				.send(err);
-			newUser = result.toObject();
-			newUser.password = null;
+
+			// Send user back without password.
+			delete user.password;
 			res.status(200)
-				.json(newUser);
+				.send(user);
 		});
 	},
 
+	// READ USER //
 	read: function(req, res, next) {
 		User.find(req.query, function(err, result) {
 			if (err) return res.status(500)
@@ -26,12 +46,21 @@ module.exports = {
 		});
 	},
 
+	// RETURN CURRENT USER //
 	me: function(req, res, next) {
+		// If user isnt on the session, then return error status
 		if (!req.user) return res.status(401)
 			.send('current user not defined');
-		req.user.password = null;
+
+		// Remove password for security
+		var user = req.user[0];
+		console.log(user);
+
+		delete user.password;
+
+		// Return user
 		return res.status(200)
-			.json(req.user);
+			.json(user);
 	},
 
 	update: function(req, res, next) {

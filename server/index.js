@@ -22,7 +22,7 @@ app.set('db', massiveServer);
 var db = app.get('db');
 
 var dbSetup = require('./services/dbSetup');
-// dbSetup.run();
+dbSetup.run();
 
 // CONTROLLERS //
 var UserCtrl = require('./controllers/UserCtrl');
