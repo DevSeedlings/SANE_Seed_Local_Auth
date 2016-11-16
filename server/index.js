@@ -37,6 +37,15 @@ var isAuthed = function(req, res, next) {
 	return next();
 };
 
+var isAdmin = function(req, res, next) {
+	if (req.user.userType === 'admin') {
+		next();
+	} else {
+		return res.status(401)
+			.send();
+	}
+};
+
 // Session and passport //
 app.use(session({
 	secret: config.SESSION_SECRET,
@@ -47,20 +56,20 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Passport Endpoints //
-app.post('/login', passport.authenticate('local', {
+app.post('/api/login', passport.authenticate('local', {
 	successRedirect: '/me'
 }));
-app.get('/logout', function(req, res, next) {
+app.get('/api/logout', function(req, res, next) {
 	req.logout();
 	return res.status(200)
 		.send('logged out');
 });
 
 // User Endpoints //
-app.post('/register', UserCtrl.register);
-app.get('/user', UserCtrl.read);
-app.get('/me', isAuthed, UserCtrl.me);
-app.put('/user/:_id', isAuthed, UserCtrl.update);
+app.post('/api/register', UserCtrl.register);
+app.post('/api/user', UserCtrl.read);
+app.get('/api/me', isAuthed, UserCtrl.me);
+app.put('/api/user/current', isAuthed, UserCtrl.update);
 
 // CONNECTIONS //
 var port = config.PORT;

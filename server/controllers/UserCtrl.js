@@ -21,10 +21,16 @@ module.exports = {
 		// Hash the users password for security
 		user.password = hashPassword(user.password);
 
-		db.user_create([user.name, user.email, user.password], function(err, user) {
+		user.email = user.email.toLowerCase();
+
+		db.user.user_create([user.name, user.email, user.password], function(err, user) {
 			// If err, send err
-			if (err) return res.status(500)
-				.send(err);
+			if (err) {
+				console.log('Registration error: ', err);
+
+				return res.status(500)
+					.send(err);
+			}
 
 			// Send user back without password.
 			delete user.password;
@@ -35,26 +41,36 @@ module.exports = {
 
 	// READ USER //
 	read: function(req, res, next) {
-		User.find(req.query, function(err, result) {
-			if (err) return res.status(500)
-				.send(err);
-			for (var i = 0; i < result.length; i++) {
-				delete result[i].password;
+		// List the column names that you want the search to grab
+		var searchOptions = {
+			columns: ['id', 'name', 'email']
+		};
+
+		db.users.find(req.body, searchOptions, function(err, users) {
+			if (err) {
+				console.log('User read error: ', err);
+
+				return res.status(401)
+					.send(err);
 			}
+
 			res.status(200)
-				.send(result);
+				.json(users);
 		});
 	},
 
 	// RETURN CURRENT USER //
 	me: function(req, res, next) {
 		// If user isnt on the session, then return error status
-		if (!req.user) return res.status(401)
-			.send('current user not defined');
+		if (!req.user) {
+			console.log('Current user not found');
+
+			return res.status(401)
+				.send('current user not defined');
+		}
 
 		// Remove password for security
-		var user = req.user[0];
-		console.log(user);
+		var user = req.user;
 
 		delete user.password;
 
@@ -64,10 +80,24 @@ module.exports = {
 	},
 
 	update: function(req, res, next) {
-		User.findByIdAndUpdate(req.params._id, req.body, function(err, result) {
-			if (err) next(err);
+		console.log('Starting update');
+
+		var updateUser = req.body;
+		updateUser.id = req.user.id;
+		db.users.save(updateUser, function(err, user) {
+			if (err) {
+				console.log('User update error', err);
+
+				return res.status(401)
+					.send(err);
+			}
+
+			req.user = user;
+
+			delete user.password;
+
 			res.status(200)
-				.send('user updated');
+				.json(user);
 		});
 	}
 };
