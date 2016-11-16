@@ -1,5 +1,5 @@
-# SEAN-seed
-This is a fully functional basic MEAN stack app seed. It has passport, gulp, and sass capabilities (gulp and sass not required for use).
+# SANE-seed
+This is a fully functional basic SANE stack app seed. It has passport, gulp, and sass capabilities (gulp and sass not required for use).
 
 ###To use this seed
 1. Git clone it
