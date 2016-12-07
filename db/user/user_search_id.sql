@@ -1,3 +1,3 @@
 SELECT *
-FROM Users
+FROM users
 WHERE id = $1

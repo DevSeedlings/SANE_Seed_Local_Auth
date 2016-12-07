@@ -16,9 +16,9 @@ module.exports = {
 	run: function() {
 		console.log('Initializing database');
 
-		db.initalize.user_table_initalize(function(err, table) {
-			if (err) return log('User table failed to create');
-			else log('User table created');
+		db.initalize.tables_initalize(function(err, table) {
+			if (err) return log('Some tables failed to create');
+			else log('Tables successfully initalized');
 		});
 	}
 };

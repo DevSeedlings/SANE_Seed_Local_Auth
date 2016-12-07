@@ -39,25 +39,27 @@ module.exports = {
 		});
 	},
 
-	// READ USER //
-	read: function(req, res, next) {
-		// List the column names that you want the search to grab
-		var searchOptions = {
-			columns: ['id', 'name', 'email']
-		};
 
-		db.users.find(req.body, searchOptions, function(err, users) {
-			if (err) {
-				console.log('User read error: ', err);
 
-				return res.status(401)
-					.send(err);
-			}
-
-			res.status(200)
-				.json(users);
-		});
-	},
+	// // READ USER //
+	// read: function(req, res, next) {
+	// 	// List the column names that you want the search to grab
+	// 	var searchOptions = {
+	// 		columns: ['id', 'name', 'email']
+	// 	};
+	//
+	// 	db.users.find(req.query, searchOptions, function(err, users) {
+	// 		if (err) {
+	// 			console.log('User read error: ', err);
+	//
+	// 			return res.status(401)
+	// 				.send(err);
+	// 		}
+	//
+	// 		res.status(200)
+	// 			.json(users);
+	// 	});
+	// },
 
 	// RETURN CURRENT USER //
 	me: function(req, res, next) {

@@ -1,4 +1,8 @@
 angular.module("app").controller("loginCtrl", function($scope, authService, $state) {
+  $scope.user = {
+    email: 't@t.com',
+    password: 't'
+  }
 
   $scope.login = function(user) {
     authService.login(user).then(function(response) {

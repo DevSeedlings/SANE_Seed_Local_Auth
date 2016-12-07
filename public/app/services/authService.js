@@ -43,10 +43,10 @@ angular.module("app")
 				});
 		};
 
-		this.editUser = function(id, user) {
+		this.editUser = function(user) {
 			return $http({
 					method: 'PUT',
-					url: "/user/" + id,
+					url: "/api/user/current",
 					data: user
 				})
 				.then(function(response) {

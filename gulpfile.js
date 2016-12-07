@@ -6,7 +6,7 @@ var nodemon = require('gulp-nodemon');
 
 var paths = {
 	jsSource: ['public/app/**/*.js'],
-	sassSource: ['public/styles/**/*.sass'],
+	sassSource: ['public/**/*.scss'],
 	server: ['server/index.js']
 };
 
