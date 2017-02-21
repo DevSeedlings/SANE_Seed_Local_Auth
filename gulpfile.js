@@ -36,7 +36,7 @@ gulp.task('html', function() {
 		.pipe(gulp.dest('./dist'));
 });
 
-gulp.task('build', ['js', 'sass', 'html']); // add 'serve' to the array if you want gulp to run nodemon as well.
+gulp.task('build', ['js', 'sass', 'html']);
 
 gulp.task('watch', function() {
 	gulp.watch(paths.jsSource, ['js']);
@@ -44,4 +44,4 @@ gulp.task('watch', function() {
 	gulp.watch(paths.htmlSource, ['html']);
 });
 
-gulp.task('default', ['build', 'watch']);
+gulp.task('default', ['build', 'watch']); // add 'serve' to the array if you want gulp to run nodemon as well.
