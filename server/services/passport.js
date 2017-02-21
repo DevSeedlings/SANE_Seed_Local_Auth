@@ -41,12 +41,10 @@ passport.use(new LocalStrategy({
 
 // Puts the user on the session
 passport.serializeUser(function(user, done) {
-	done(null, user.id);
+	done(null, user);
 });
-passport.deserializeUser(function(id, done) {
-	db.user.user_search_id([id], function(err, user) {
-		done(err, user[0]);
-	});
+passport.deserializeUser(function(user, done) {
+	done(null, user);
 });
 
 module.exports = passport;
