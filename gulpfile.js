@@ -6,7 +6,7 @@ var nodemon = require('gulp-nodemon');
 
 var paths = {
 	jsSource: ['public/app/**/*.js'],
-	sassSource: ['public/**/*.scss'],
+	sassSource: ['public/**/*.sass'], // Change sass to scss if you want to work with it instead.
 	htmlSource: ['public/**/*.html'],
 	server: ['server/index.js']
 };
@@ -20,7 +20,7 @@ gulp.task('serve', function() {
 gulp.task('sass', function() {
 	gulp.src(paths.sassSource)
 		.pipe(sass())
-		.pipe(concat('style.css'))
+		.pipe(concat('bundle.css'))
 		.pipe(gulp.dest('./dist'));
 });
 
