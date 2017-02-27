@@ -1,9 +1,9 @@
 # SANE-seed
 This is a fully functional basic SANE stack app seed. It has passport local, gulp, and sass capabilities.
 
-### To use this seed
+## To use this seed
 
-#### Install
+### Install
 1. Git clone it
 2. In the terminal, navigate to the project folder and run 'npm i'
 3. Create a 'config.js' file in the server folder (It is already ignored).
@@ -17,9 +17,9 @@ module.exports = {
 };
 ```
 
-#### Gulp
+### Gulp
 1. Run `npm install -g gulp` (if you have not installed it previously)
 2. In a terminal window, navigate to the project folder and run `gulp`
 
-#### Run
+### Run
 1. In a new terminal window, navigate to the project folder and run `nodemon`
