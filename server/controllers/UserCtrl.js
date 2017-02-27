@@ -23,7 +23,7 @@ module.exports = {
 
 		user.email = user.email.toLowerCase();
 
-		db.user.user_create([user.name, user.email, user.password], function(err, user) {
+		db.user.create([user.name, user.email, user.password], function(err, user) {
 			// If err, send err
 			if (err) {
 				console.log('Registration error: ', err);
@@ -38,28 +38,6 @@ module.exports = {
 				.send(user);
 		});
 	},
-
-
-
-	// // READ USER //
-	// read: function(req, res, next) {
-	// 	// List the column names that you want the search to grab
-	// 	var searchOptions = {
-	// 		columns: ['id', 'name', 'email']
-	// 	};
-	//
-	// 	db.users.find(req.query, searchOptions, function(err, users) {
-	// 		if (err) {
-	// 			console.log('User read error: ', err);
-	//
-	// 			return res.status(401)
-	// 				.send(err);
-	// 		}
-	//
-	// 		res.status(200)
-	// 			.json(users);
-	// 	});
-	// },
 
 	// RETURN CURRENT USER //
 	me: function(req, res, next) {
