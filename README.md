@@ -1,4 +1,4 @@
-# SANE-seed
+# SANE-Seed_Local_Auth
 This is a fully functional basic SANE stack app seed. It has passport local, gulp, and sass capabilities.
 
 ## To use this seed
@@ -7,7 +7,7 @@ This is a fully functional basic SANE stack app seed. It has passport local, gul
 1. Git clone it
 2. In the terminal, navigate to the project folder and run 'npm i'
 3. Create a 'config.js' file in the server folder (It is already ignored).
-should look something like this. (Update for your use)
+\n should look something like this. (Update for your use)
 ```javascript
 module.exports = {
   PORT: 3000,
