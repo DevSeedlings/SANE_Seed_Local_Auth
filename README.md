@@ -6,8 +6,9 @@ This is a fully functional basic SANE stack app seed. It has passport local, gul
 ### Install
 1. Git clone it
 2. In the terminal, navigate to the project folder and run 'npm i'
-3. Create a 'config.js' file in the server folder (It is already ignored).
-\n should look something like this. (Update for your use)
+3. Create a 'config.js' file in the server folder (It is already ignored). 
+
+#### should look something like this. (Update for your use)
 ```javascript
 module.exports = {
   PORT: 3000,
