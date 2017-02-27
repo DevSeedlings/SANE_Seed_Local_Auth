@@ -25,7 +25,7 @@ var dbSetup = require('./services/dbSetup');
 dbSetup.run();
 
 // CONTROLLERS //
-var UserCtrl = require('./controllers/UserCtrl');
+var userCtrl = require('./controllers/userCtrl');
 
 // SERVICES //
 var passport = require('./services/passport');
@@ -57,10 +57,10 @@ app.get('/api/logout', function(req, res, next) {
 });
 
 // User Endpoints //
-app.post('/api/register', UserCtrl.register);
-// app.get('/api/user', UserCtrl.read);
-app.get('/api/me', isAuthed, UserCtrl.me);
-app.put('/api/user/current', isAuthed, UserCtrl.update);
+app.post('/api/register', userCtrl.register);
+// app.get('/api/user', userCtrl.read);
+app.get('/api/me', isAuthed, userCtrl.me);
+app.put('/api/user/current', isAuthed, userCtrl.update);
 
 // CONNECTIONS //
 var port = config.PORT;
