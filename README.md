@@ -1,5 +1,5 @@
 # SANE-Seed_Local_Auth
-This is a fully functional basic SANE stack app seed. It has passport local, gulp, and sass capabilities.
+This is a fully functional basic SANE stack app seed. It has passport local, gulp, and sass capabilities. (If you dont want gulp and sass, you will need to update the index.html and index.js accordingly)
 
 ## To use this seed
 
