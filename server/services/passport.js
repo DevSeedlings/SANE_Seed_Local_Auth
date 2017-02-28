@@ -22,7 +22,7 @@ passport.use(new LocalStrategy({
 }, function(email, password, done) {
 	email = email.toLowerCase();
 
-	db.user.user_search_email([email], function(err, user) {
+	db.user.search_email([email], function(err, user) {
 		user = user[0];
 
 		// If err, return err
@@ -32,7 +32,10 @@ passport.use(new LocalStrategy({
 		if (!user) return done(null, false);
 
 		// If user is found, check to see if passwords match. If so, return user
-		if (verifyPassword(password, user.password)) return done(null, user);
+		if (verifyPassword(password, user.password)) {
+			delete user.password;
+			return done(null, user);
+		}
 
 		// If no match, return false
 		return done(null, false);

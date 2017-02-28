@@ -32,8 +32,8 @@ module.exports = {
 					.send(err);
 			}
 
-			// Send user back without password.
 			delete user.password;
+
 			res.status(200)
 				.send(user);
 		});
@@ -49,14 +49,9 @@ module.exports = {
 				.send('current user not defined');
 		}
 
-		// Remove password for security
-		var user = req.user;
-
-		delete user.password;
-
 		// Return user
 		return res.status(200)
-			.json(user);
+			.json(req.user);
 	},
 
 	update: function(req, res, next) {
@@ -72,9 +67,8 @@ module.exports = {
 					.send(err);
 			}
 
-			req.user = user;
-
 			delete user.password;
+			req.user = user;
 
 			res.status(200)
 				.json(user);
