@@ -23,7 +23,7 @@ module.exports = {
 
 		user.email = user.email.toLowerCase();
 
-		db.user.create([user.name, user.email, user.password], function(err, user) {
+		db.user.insert([user.name, user.email, user.password], function(err, user) {
 			// If err, send err
 			if (err) {
 				console.log('Registration error: ', err);
@@ -51,10 +51,10 @@ module.exports = {
 
 		// Return user
 		return res.status(200)
-			.json(req.user);
+			.send(req.user);
 	},
 
-	update: function(req, res, next) {
+	updateCurrent: function(req, res, next) {
 		console.log('Starting update');
 
 		var updateUser = req.body;
@@ -71,7 +71,7 @@ module.exports = {
 			req.user = user;
 
 			res.status(200)
-				.json(user);
+				.send(user);
 		});
 	}
 };

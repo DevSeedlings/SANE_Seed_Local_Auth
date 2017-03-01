@@ -64,7 +64,7 @@ var userCtrl = require('./controllers/userCtrl');
 // USER ENDPOINTS //
 app.post('/api/register', userCtrl.register);
 app.get('/api/me', isAuthed, userCtrl.me);
-app.put('/api/user/current', isAuthed, userCtrl.update);
+app.put('/api/user/current', isAuthed, userCtrl.updateCurrent);
 
 
 
