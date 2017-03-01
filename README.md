@@ -4,7 +4,7 @@ This is a fully functional basic SANE stack app seed. It has passport local, gul
 ## To use this seed
 
 ### Setup
-1. Git clone this repo.
+1. Clone this repo.
 2. In the terminal, navigate to the project folder and run 'npm i'.
 3. Create a 'config.js' file in the server folder (It is already ignored).
 
