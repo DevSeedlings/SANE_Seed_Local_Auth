@@ -41,14 +41,6 @@ module.exports = {
 
 	// RETURN CURRENT USER //
 	me: function(req, res, next) {
-		// If user isnt on the session, then return error status
-		if (!req.user) {
-			console.log('Current user not found');
-
-			return res.status(401)
-				.send('current user not defined');
-		}
-
 		// Return user
 		return res.status(200)
 			.send(req.user);
@@ -58,7 +50,7 @@ module.exports = {
 		console.log('Starting update');
 
 		var updateUser = req.body;
-		updateUser.id = req.user.id;
+		updateUser.user_id = req.user.user_id;
 		db.users.save(updateUser, function(err, user) {
 			if (err) {
 				console.log('User update error', err);

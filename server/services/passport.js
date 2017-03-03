@@ -22,7 +22,7 @@ passport.use(new LocalStrategy({
 }, function(email, password, done) {
 	email = email.toLowerCase();
 
-	db.user.search_email([email], function(err, user) {
+	db.user.read_email([email], function(err, user) {
 		user = user[0];
 
 		// If err, return err

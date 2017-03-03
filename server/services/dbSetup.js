@@ -4,9 +4,9 @@ var db = app.get('db');
 var config = require('./../config');
 
 // ALLOW CONSOLE OUTPUT //
-var allowConsolePutput = config.INITIALIZE_LOG;
+var allowConsoleOutput = config.INITIALIZE_LOG;
 var log = function(input) {
-	if (allowConsolePutput) {
+	if (allowConsoleOutput) {
 		console.log(input);
 	}
 };
